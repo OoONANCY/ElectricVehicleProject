@@ -12,155 +12,392 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/coloring.css" rel="stylesheet">
     <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
-            font-family: 'Inter', sans-serif;
-            color: #333;
-            background-color: #f8fafc;
+            font-family: 'Poppins', sans-serif;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f0 100%);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
-        .de-box {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        .google-map {
+            padding: 0;
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+        .google-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: brightness(0.95);
+        }
+        .google-map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(49, 110, 139, 0.1), rgba(34, 82, 104, 0.1));
+            pointer-events: none;
+        }
+        .contact-layout1 {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f0 100%);
+        }
+        .contact-panel {
+            display: flex;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
             margin-bottom: 50px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: fadeIn 0.5s ease-in-out;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            animation: fadeInUp 0.8s ease-out;
         }
-        .de-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        .contact-panel:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
         }
-        .form-control {
+        .contact__panel-info {
+            flex: 1 1 40%;
+            padding: 50px;
+        }
+        .contact__panel-form {
+            flex: 1 1 60%;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 0 24px 24px 0;
+        }
+        .contact-info-box {
+            margin-bottom: 40px;
+        }
+        .contact__info-box-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .contact__info-box-title::after {
+            content: '';
+            width: 40px;
+            height: 3px;
+            background: #316E8B;
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        .contact-info-box:hover .contact__info-box-title::after {
+            width: 60px;
+        }
+        .contact__info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .contact__info-list li {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #4a4a4a;
+            margin-bottom: 10px;
+        }
+        .contact__info-list li a {
+            color: #316E8B;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact__info-list li a:hover {
+            color: #2A5F76;
+        }
+        .contact__panel-desc {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #4a4a4a;
             margin-bottom: 25px;
-            border-radius: 8px;
-            border: 1px solid #e0e0e0;
-            padding: 14px;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        .social-icons a {
+            color: #4a4a4a;
+            font-size: 1.4rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #316E8B;
+            transform: scale(1.2);
+        }
+        .contact__panel-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .contact__panel-title::after {
+            content: '';
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(135deg, #316E8B, #225268);
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
+        }
+        .contact__panel-form .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        .contact__panel-form input,
+        .contact__panel-form select,
+        .contact__panel-form textarea {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.5);
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            color: #1a1a1a;
+            transition: all 0.3s ease;
         }
-        .form-control:focus {
-            border-color: #28a745;
-            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+        .contact__panel-form input:focus,
+        .contact__panel-form select:focus,
+        .contact__panel-form textarea:focus {
+            border-color: #316E8B;
+            background: #fff;
+            box-shadow: 0 0 15px rgba(49, 110, 139, 0.2);
+            outline: none;
         }
-        .btn-main {
-            background: linear-gradient(135deg, #28a745, #34c759);
+        .contact__panel-form input:not(:placeholder-shown)+label,
+        .contact__panel-form textarea:not(:placeholder-shown)+label,
+        .contact__panel-form select:not(:placeholder-shown)+label {
+            transform: translateY(-30px) scale(0.85);
+            color: #316E8B;
+        }
+        .contact__panel-form label {
+            position: absolute;
+            top: 14px;
+            left: 20px;
+            font-size: 1rem;
+            color: #4a4a4a;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .contact__panel-form textarea {
+            height: 120px;
+            resize: none;
+        }
+        .contact__panel-form select {
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg fill="%234a4a4a" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 20px center;
+            background-size: 16px;
+            padding-right: 50px;
+        }
+        .btn__primary {
+            background: linear-gradient(135deg, #316E8B, #225268);
             color: #fff;
             padding: 14px 35px;
-            border-radius: 8px;
+            border-radius: 12px;
             border: none;
             cursor: pointer;
             font-weight: 600;
             font-size: 1rem;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        .btn-main:hover {
-            background: linear-gradient(135deg, #218838, #2db84c);
-            transform: scale(1.05);
-        }
-        .alert {
-            display: none;
-            border-radius: 8px;
-            padding: 16px;
-            font-size: 0.95rem;
-        }
-        .section-heading {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            color: #1a1a1a;
-            position: relative;
-        }
-        .section-heading::after {
-            content: '';
-            width: 50px;
-            height: 3px;
-            background: #28a745;
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-        }
-        .social-links a {
+            transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            color: #333;
+            gap: 10px;
             text-decoration: none;
-            margin-right: 25px;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: color 0.3s ease, transform 0.2s ease;
-        }
-        .social-links a:hover {
-            color: #28a745;
-            transform: translateY(-2px);
-        }
-        .social-links i {
-            margin-right: 10px;
-            font-size: 1.3rem;
-        }
-        .map-container {
-            border-radius: 16px;
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            margin-top: 25px;
-            animation: fadeIn 0.5s ease-in-out;
         }
-        .map-container iframe {
+        .btn__primary:hover {
+            background: linear-gradient(135deg, #2A5F76, #1C4659);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .btn__primary::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+        .btn__primary:hover::after {
+            width: 200%;
+            height: 200%;
+            transform: translate(-50%, -50%);
+        }
+        .contact-result {
+            margin-top: 25px;
+        }
+        .alert-success {
+            display: none;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 0.95rem;
+            background: rgba(46, 125, 50, 0.1);
+            color: #2e7d32;
+            border: 1px solid rgba(46, 125, 50, 0.3);
+        }
+        .alert-danger {
+            display: none;
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-size: 0.95rem;
+            background: rgba(211, 47, 47, 0.1);
+            color: #d32f2f;
+            border: 1px solid rgba(211, 47, 47, 0.3);
+        }
+        .cta-layout2 {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #316E8B, #225268);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .cta-layout2::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 450px;
-            border: none;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.1)" d="M0,0H1200V60C1200,60,600,120,300,60C0,0,0,0,0,0Z"/></svg>') no-repeat top center;
+            background-size: cover;
+            pointer-events: none;
         }
-        .cta-buttons {
+        .cta-container {
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 25px;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 100%;
+            overflow: hidden;
         }
-        .cta-buttons a {
-            background: linear-gradient(135deg, #28a745, #34c759);
-            color: #fff;
-            padding: 14px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background 0.3s ease, transform 0.2s ease;
+        .cta__item {
+            flex: 1 1 calc(50% - 15px);
+            max-width: calc(50% - 15px);
+            display: flex;
+            align-items: flex-start;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            animation: fadeInUp 0.8s ease-out;
         }
-        .cta-buttons a:hover {
-            background: linear-gradient(135deg, #218838, #2db84c);
-            transform: scale(1.05);
+        .cta__item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
         }
-        #section-call-to-action {
-            background: linear-gradient(135deg, #28a745, #1e7e34);
-            padding: 60px 0;
-            margin-bottom: 0;
-            animation: fadeIn 0.5s ease-in-out;
-        }
-        #section-call-to-action h2 {
+        .cta__icon {
+            margin-right: 25px;
             font-size: 2.5rem;
-            font-weight: 700;
             color: #fff;
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+        .cta__item:hover .cta__icon {
+            transform: scale(1.1);
+        }
+        .cta__body {
+            flex: 1;
+            overflow-wrap: break-word;
+        }
+        .cta__title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 15px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+        .cta__desc {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #e0e0e0;
             margin-bottom: 20px;
+            overflow-wrap: break-word;
         }
-        #section-call-to-action p {
-            color: #f0f0f0;
-            font-size: 1.1rem;
+        .btn__link {
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        .shadow-soft {
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            border-radius: 16px;
-            margin-bottom: 50px; /* Added spacing below the card */
         }
         p {
             font-size: 1.05rem;
-            line-height: 1.6;
-            color: #555;
+            line-height: 1.8;
+            color: #4a4a4a;
+        }
+        @media (max-width: 991px) {
+            .contact__panel-info,
+            .contact__panel-form {
+                flex: 1 1 100%;
+                padding: 30px;
+            }
+            .contact__panel-form {
+                border-radius: 0 0 24px 24px;
+            }
+            .cta__item {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+            .cta-container {
+                gap: 20px;
+            }
+            .cta__title {
+                min-height: 48px;
+            }
+        }
+        @media (max-width: 576px) {
+            .contact__panel-info,
+            .contact__panel-form {
+                padding: 20px;
+            }
+            .contact__panel-title {
+                font-size: 1.6rem;
+            }
+            .contact__info-box-title {
+                font-size: 1.4rem;
+            }
+            .cta__item {
+                padding: 20px;
+            }
+            .cta__icon {
+                font-size: 2rem;
+            }
+            .cta__title {
+                font-size: 1.4rem;
+                min-height: 40px;
+            }
+            .cta-container {
+                gap: 15px;
+            }
         }
     </style>
 </head>
@@ -226,131 +463,120 @@
 
         <!-- Content Start -->
         <div class="no-bottom no-top" id="content">
-            <section id="subheader" class="jarallax text-light">
-                <img src="images/background/subheader.jpg" class="jarallax-img" alt="">
-                <div class="center-y text-center">
-                    <div class="container">
-                        <h1>Contact Us</h1>
-                    </div>
-                </div>
+            <!-- Google Map -->
+            <section class="google-map py-0 mt-44">
+                <iframe frameborder="0" height="500" width="100%"
+                    src="https://maps.google.com/maps?q=Two%20Horizon%2C%20Gurugram%2C%20122002%2C%20India&t=m&z=14&output=embed&iwloc=near"></iframe>
             </section>
 
-            <section>
+            <!-- Contact Layout 1 -->
+            <section class="contact-layout1">
                 <div class="container">
-                    <div class="row align-items-start">
-                        <div class="flex justify-center">
-                            <div class="p-4 rounded-3 shadow-soft max-w-3xl text-center" data-bgcolor="#ffffff">
-                                <form name="contactForm" id="contact_form" method="post">
-                                    <div id="step-1" class="row">
-                                        <h5 class="text-lg font-medium">
-                                            We’d love to hear from you! Whether you have questions about our electric vehicles,
-                                            need assistance with a purchase or booking, or want to learn more about our services,
-                                            we’re here to help. Reach out to us through any of the following methods,
-                                            and our team will get back to you as soon as possible.
-                                        </h5>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="contact-panel p-0 box-shadow-none">
+                                <div class="contact__panel-info mb-30">
+                                    <!-- Our Location -->
+                                    <div class="contact-info-box">
+                                        <h4 class="contact__info-box-title">Visit Us at Our Office</h4>
+                                        <ul class="contact__info-list list-unstyled">
+                                            <li>Two Horizon, Gurugram, 122002</li>
+                                            <li>Office Hours:</li>
+                                            <li>Monday - Friday: 9:00 AM - 6:00 PM</li>
+                                            <li>Saturday: 10:00 AM - 2:00 PM</li>
+                                            <li>Sunday: Closed</li>
+                                        </ul>
                                     </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        <!-- Contact Form and Office Info -->
-                        <div class="row">
-                            <!-- Contact Form -->
-                            <div class="col-lg-8 mb-sm-30">
-                                <div class="de-box">
-                                    <h3 class="section-heading">Send Us a Message</h3>
-                                    <p>Fill out the form below with your details and inquiry, and we will get back to you as soon as possible.</p>
-                                    <form id="contact_form" class="form-border" method="POST">
+                                    <!-- Phone & Email Contact -->
+                                    <div class="contact-info-box">
+                                        <h4 class="contact__info-box-title">Reach Us by Phone or Email</h4>
+                                        <ul class="contact__info-list list-unstyled">
+                                            <li>Phone: <a href="tel:+918766270884">+91 8766270884</a></li>
+                                            <li>Email: <a href="mailto:contact@evehicle.com">contact@evehicle.com</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- Social Media Links -->
+                                    <div class="contact-info-box">
+                                        <h4 class="contact__info-box-title">Follow Us for Updates</h4>
+                                        <p class="contact__panel-desc mb-20">Stay connected with us on social media to get the latest news, tips, and updates about electric vehicles and our services.</p>
+                                        <ul class="social-icons list-unstyled d-flex mb-0">
+                                            <li class="mr-2"><a href="https://facebook.com/eVehicle"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li class="mr-2"><a href="https://instagram.com/eVehicleIndia"><i class="fab fa-instagram"></i></a></li>
+                                            <li class="mr-2"><a href="https://linkedin.com/company/eVehicle"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li class="mr-2"><a href="https://twitter.com/eVehicleOfficial"><i class="fab fa-twitter"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="contact__panel-form mb-30">
+                                    <!-- Introduction -->
+                                    <h4 class="contact__panel-title">Get in Touch with eVehicle for All Your Electric Vehicle Needs</h4>
+                                    <p class="contact__panel-desc mb-40">We’re here to help you make the switch to electric vehicles! Whether you have questions about our services, need a custom quote, or want to learn more about how electric vehicles can benefit you, our team is ready to assist you. Reach out to us through the contact form, call us, or visit our office to speak with an expert.</p>
+                                    <!-- Contact Form -->
+                                    <h4 class="contact__panel-title">Send Us a Message</h4>
+                                    <p class="contact__panel-desc mb-40">Have questions or want more information about our electric vehicle solutions? Fill out the form below, and one of our team members will get back to you as soon as possible.</p>
+                                    <form method="post" id="contact_form" class="contact__panel-form">
                                         <input type="hidden" name="access_key" value="5e5f4d55-818e-4a0d-8860-26914e2e135c">
                                         <div class="row">
-                                            <div class="col-md-4">
-                                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="text" placeholder=" " class="form-control" id="contact-name" name="contact-name" required>
+                                                    <label for="contact-name">Full Name</label>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="email" placeholder=" " class="form-control" id="contact-email" name="contact-email" required>
+                                                    <label for="contact-email">Email Address</label>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4">
-                                                <input type="text" name="phone" class="form-control" placeholder="Your Phone" required>
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <input type="text" placeholder=" " class="form-control" id="contact-phone" name="contact-phone" required>
+                                                    <label for="contact-phone">Phone Number</label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
-                                        <button type="submit" class="btn-main mt-3">Send Message</button>
-                                        <!-- Feedback Messages -->
-                                        <div id="form-messages" class="mt-3">
-                                            <div id="success_message" class="alert alert-success">
-                                                ✅ Your message has been sent successfully!
+                                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <select name="contact-service" id="contact-service" required>
+                                                        <option value="">Select Service Interested In</option>
+                                                        <option value="purchase">EV Purchase</option>
+                                                        <option value="consultation">Expert EV Consultation</option>
+                                                        <option value="test-drive">Test Drive Booking</option>
+                                                        <option value="maintenance">EV Maintenance & Support</option>
+                                                        <option value="sales">EV Sales & Supply</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div id="error_message" class="alert alert-danger">
-                                                ❌ Oops! Something went wrong. Please try again later.
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <select name="contact-method" id="contact-method" required>
+                                                        <option value="">Preferred Contact Method</option>
+                                                        <option value="phone">Phone</option>
+                                                        <option value="email">Email</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <textarea placeholder=" " class="form-control" id="contact-message" name="contact-message" required></textarea>
+                                                    <label for="contact-message">Your Message</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                                <button type="submit" class="btn btn__primary">
+                                                    <i class="fas fa-arrow-right"></i><span>Send Message</span>
+                                                </button>
+                                                <div class="contact-result">
+                                                    <div id="success_message" class="alert-success">
+                                                        ✅ Your message has been sent successfully!
+                                                    </div>
+                                                    <div id="error_message" class="alert-danger">
+                                                        ❌ Oops! Something went wrong. Please try again later.
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </form>
-                                    <p>We will respond to your inquiry within 24 hours.</p>
-                                </div>
-                            </div>
-
-                            <!-- Office Info -->
-                            <div class="col-lg-4 office-info">
-                                <div class="de-box">
-                                    <h3 class="section-heading">Get in Touch</h3>
-                                    <address class="s1 space-y-3">
-                                        <span class="block">
-                                            <i class="id-color fa fa-map-marker fa-lg mr-2"></i>
-                                            <strong>Address:</strong>
-                                            Two Horizon, Gurugram, 122002
-                                        </span>
-                                        <span class="block">
-                                            <i class="id-color fa fa-phone fa-lg mr-2"></i>
-                                            <strong>Customer Support:</strong>
-                                            +91 8766270884
-                                        </span>
-                                        <span Penal Code applies only to those who have committed a crime. The death penalty is a legal penalty in India, but it has not been used since 2004.
-                                        <span class="block">
-                                            <i class="id-color fa fa-phone fa-lg mr-2"></i>
-                                            <strong>Sales Inquiries:</strong>
-                                            +91 8766270884
-                                        </span>
-                                        <span class="block">
-                                            <i class="id-color fa fa-envelope-o fa-lg mr-2"></i>
-                                            <strong>General Inquiries:</strong>
-                                            <a href="mailto:info@evehicle.com">info@evehicle.com</a><br>
-                                        </span>
-                                        <span class="block">
-                                            <i class="id-color fa fa-envelope-o fa-lg mr-2"></i>
-                                            <strong>Customer Support:</strong>
-                                            <a href="mailto:support@evehicle.com">support@evehicle.com</a><br>
-                                        </span>
-                                        <span class="block">
-                                            <i class="id-color fa fa-envelope-o fa-lg mr-2"></i>
-                                            <strong>Sales Team:</strong>
-                                            <a href="mailto:sales@evehicle.com">sales@evehicle.com</a>
-                                        </span>
-                                    </address>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Social Media Links -->
-                        <div class="col-lg-12">
-                            <div class="de-box">
-                                <h3 class="section-heading">Follow Us on Social Media</h3>
-                                <p>Stay updated with the latest news, offers, and electric vehicle tips. Follow us on social media:</p>
-                                <div class="social-links mt-4">
-                                    <a href="https://facebook.com/eVehicle"><i class="fa fa-facebook"></i>Facebook: @eVehicle</a>
-                                    <a href="https://instagram.com/eVehicleIndia"><i class="fa fa-instagram"></i>Instagram: @eVehicleIndia</a>
-                                    <a href="https://twitter.com/eVehicleOfficial"><i class="fa fa-twitter"></i>Twitter: @eVehicleOfficial</a>
-                                    <a href="https://linkedin.com/company/eVehicle"><i class="fa fa-linkedin"></i>LinkedIn: eVehicle</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Map & Directions -->
-                        <div class="col-lg-12">
-                            <div class="de-box">
-                                <h3 class="section-heading">Find Our Location</h3>
-                                <p>Visit us at our headquarters for a personalized consultation or to explore our range of electric vehicles. See the map below for directions to our office:</p>
-                                <div class="map-container mt-4">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.006471667396!2d77.59456331482207!3d12.97159899086385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b6e6d3%3A0x6e6e6e6e6e6e6e6e!2sBangalore%2C%20Karnataka%2C%20India!5e0!3m2!1sen!2sus!4v1634567890123!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -358,23 +584,50 @@
                 </div>
             </section>
 
-            <section id="section-call-to-action" class="bg-color-2 pt60 pb60 text-light">
+            <!-- CTA Layout 2 -->
+            <section class="cta-layout2">
                 <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6">
-                            <h2 class="s2">Let’s Talk Electric!</h2>
-                            <p>Whether you're ready to buy, book a test drive, or just have questions about our services, we're here to assist you. Reach out today!</p>
-                        </div>
-                        <div class="col-lg-6 text-lg-center text-sm-center">
-                            <div class="cta-buttons">
-                                <a href="pricing.html">Browse Our EVs</a>
-                                <a href="booking.html">Book a Test Drive</a>
-                                <a href="contact.html">Get Expert Consultation</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="cta-container d-flex flex-wrap">
+                                <!-- CTA Item 1 -->
+                                <div class="cta__item d-flex flex-grow-1 flex-shrink-1 flex-basis-0 overflow-hidden">
+                                    <div class="cta__icon custom-icon flex-shrink-0">
+                                        <i class="fas fa-comments"></i>
+                                    </div><!-- /.cta__icon -->
+                                    <div class="cta__body mr-6 text-wrap overflow-hidden">
+                                        <h4 class="cta__title">Frequently Asked Questions</h4>
+                                        <p class="cta__desc mb-2" style="max-width: 100%; word-wrap: break-word;">
+                                            For quick answers to some of the most common questions about our electric vehicle solutions, visit our FAQ section. We’ve compiled helpful information about purchasing, test drives, maintenance, and more.
+                                        </p>
+                                        <a href="faqs.html" class="btn btn__link btn__primary d-inline-flex align-items-center">
+                                            <i class="fas fa-arrow-right mr-1"></i>
+                                            <span>Visit Our FAQ Page</span>
+                                        </a>
+                                    </div><!-- /.cta__body -->
+                                </div><!-- /.cta__item -->
+
+                                <!-- CTA Item 2 -->
+                                <div class="cta__item d-flex flex-grow-1 flex-shrink-1 flex-basis-0 overflow-hidden">
+                                    <div class="cta__icon custom-icon flex-shrink-0">
+                                        <i class="fas fa-bolt"></i>
+                                    </div><!-- /.cta__icon -->
+                                    <div class="cta__body mr-6 text-wrap overflow-hidden">
+                                        <h4 class="cta__title">Let’s Start Your Electric Vehicle Journey Today</h4>
+                                        <p class="cta__desc mb-2" style="max-width: 100%; word-wrap: break-word;">
+                                            We’re excited to help you make the transition to electric vehicles. Whether you’re just starting to explore your options or are ready to move forward with a purchase or test drive, we are here to guide you every step of the way. Reach out to us today!
+                                        </p>
+                                        <a href="services.html" class="btn btn__link btn__primary d-inline-flex align-items-center">
+                                            <span>Checkout our Services</span>
+                                            <i class="fas fa-arrow-right ml-1"></i>
+                                        </a>
+                                    </div><!-- /.cta__body -->
+                                </div><!-- /.cta__item -->
+                            </div><!-- /.cta -->
+                        </div><!-- /.col-12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </section><!-- /.cta layout 2 -->
         </div>
 
         <!-- footer begin -->
@@ -406,11 +659,11 @@
                         <div class="widget">
                             <h5>Social Network</h5>
                             <div class="social-icons d-flex gap-3">
-                                <a href="#"><i class="fa fa-facebook fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-twitter fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-linkedin fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-pinterest fa-lg"></i></a>
-                                <a href="#"><i class="fa fa-rss fa-lg"></i></a>
+                                <a href="#"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                <a href="#"><i class="fab fa-twitter fa-lg"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                                <a href="#"><i class="fab fa-pinterest fa-lg"></i></a>
+                                <a href="#"><i class="fas fa-rss fa-lg"></i></a>
                             </div>
                         </div>
                     </div>
@@ -459,6 +712,17 @@
                 successMessage.style.display = "none";
                 errorMessage.style.display = "block";
             }
+        });
+
+        // Ripple effect for buttons
+        document.querySelectorAll('.btn__primary').forEach(button => {
+            button.addEventListener('click', function (e) {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                button.style.setProperty('--ripple-x', `${x}px`);
+                button.style.setProperty('--ripple-y', `${y}px`);
+            });
         });
     </script>
 </body>

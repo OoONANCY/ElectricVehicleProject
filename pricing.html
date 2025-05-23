@@ -15,26 +15,30 @@
   <link href="css/style.css" rel="stylesheet" type="text/css">
   <link href="css/coloring.css" rel="stylesheet" type="text/css">
   <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
-      color: #333;
-      background-color: #f8fafc;
+      font-family: 'Poppins', sans-serif;
+      color: #1a1a1a;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f0 100%);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
     }
     .de-box {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
       padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
       margin-bottom: 50px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 0.5s ease-in-out;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      animation: fadeIn 0.8s ease-out;
     }
     .de-box:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     }
     .section-heading {
       font-size: 2.5rem;
@@ -48,7 +52,7 @@
       content: '';
       width: 50px;
       height: 3px;
-      background: #28a745;
+      background: #316E8B;
       position: absolute;
       bottom: -10px;
       left: 50%;
@@ -60,20 +64,21 @@
       align-items: stretch; /* Ensures cards stretch to equal height */
     }
     .pricing-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
       padding: 30px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 0.5s ease-in-out;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      animation: fadeIn 0.8s ease-out;
       display: flex;
       flex-direction: column;
       min-height: 100%; /* Ensures cards take full height of container */
     }
     .pricing-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     }
     .pricing-card h3 {
       font-size: 1.8rem;
@@ -84,7 +89,7 @@
     .pricing-card .price {
       font-size: 2rem;
       font-weight: 700;
-      color: #28a745;
+      color: #316E8B;
       margin-bottom: 20px;
     }
     .pricing-card ul {
@@ -95,51 +100,70 @@
     }
     .pricing-card ul li {
       font-size: 1rem;
-      color: #555;
+      color: #4a4a4a;
       margin-bottom: 10px;
       position: relative;
       padding-left: 20px;
     }
     .pricing-card ul li::before {
       content: '✔';
-      color: #28a745;
+      color: #316E8B;
       position: absolute;
       left: 0;
       font-size: 1.2rem;
     }
     .pricing-card .ideal-for {
       font-style: italic;
-      color: #777;
+      color: #4a4a4a;
       font-size: 0.95rem;
       margin-top: 15px;
       margin-bottom: 20px;
     }
     .btn-main {
-      background: linear-gradient(135deg, #28a745, #34c759);
+      background: linear-gradient(135deg, #316E8B, #225268);
       color: #fff;
       padding: 14px 35px;
-      border-radius: 8px;
+      border-radius: 12px;
       border: none;
       cursor: pointer;
       font-weight: 600;
       font-size: 1rem;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
       text-decoration: none;
       display: inline-block;
       margin-top: auto; /* Pushes button to bottom of card */
+      position: relative;
+      overflow: hidden;
     }
     .btn-main:hover {
-      background: linear-gradient(135deg, #218838, #2db84c);
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #2A5F76, #1C4659);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .btn-main::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transition: all 0.5s ease;
+      pointer-events: none;
+    }
+    .btn-main:hover::after {
+      width: 200%;
+      height: 200%;
+      transform: translate(-50%, -50%);
     }
     .financing-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(20px);
       padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
       margin-bottom: 50px;
-      animation: fadeIn 0.5s ease-in-out;
+      animation: fadeIn 0.8s ease-out;
       text-align: center;
     }
     .financing-card h3 {
@@ -155,14 +179,14 @@
     }
     .financing-card ul li {
       font-size: 1.05rem;
-      color: #555;
+      color: #4a4a4a;
       margin-bottom: 10px;
     }
     #section-call-to-action {
-      background: linear-gradient(135deg, #28a745, #1e7e34);
+      background: linear-gradient(135deg, #316E8B, #225268);
       padding: 60px 0;
       margin-bottom: 0;
-      animation: fadeIn 0.5s ease-in-out;
+      animation: fadeIn 0.8s ease-out;
     }
     #section-call-to-action h2 {
       font-size: 2.5rem;
@@ -171,7 +195,7 @@
       margin-bottom: 20px;
     }
     #section-call-to-action p {
-      color: #f0f0f0;
+      color: #e0e0e0;
       font-size: 1.1rem;
     }
     .cta-buttons {
@@ -181,18 +205,36 @@
       margin-top: 25px;
     }
     .cta-buttons a {
-      background: linear-gradient(135deg, #28a745, #34c759);
+      background: linear-gradient(135deg, #316E8B, #225268);
       color: #fff;
       padding: 14px 30px;
-      border-radius: 8px;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
     .cta-buttons a:hover {
-      background: linear-gradient(135deg, #218838, #2db84c);
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #2A5F76, #1C4659);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    .cta-buttons a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transition: all 0.5s ease;
+      pointer-events: none;
+    }
+    .cta-buttons a:hover::after {
+      width: 200%;
+      height: 200%;
+      transform: translate(-50%, -50%);
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -201,7 +243,7 @@
     p {
       font-size: 1.05rem;
       line-height: 1.6;
-      color: #555;
+      color: #4a4a4a;
     }
   </style>
 </head>
@@ -443,5 +485,17 @@
   <!-- Javascript Files -->
   <script src="js/plugins.js"></script>
   <script src="js/designesia.js"></script>
+  <script>
+    // Ripple effect for buttons
+    document.querySelectorAll('.btn-main, .cta-buttons a').forEach(button => {
+      button.addEventListener('click', function(e) {
+        const rect = button.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        button.style.setProperty('--ripple-x', `${x}px`);
+        button.style.setProperty('--ripple-y', `${y}px`);
+      });
+    });
+  </script>
 </body>
 </html>
